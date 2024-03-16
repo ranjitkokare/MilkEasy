@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!-- Coding by CodingLab | www.codinglabweb.com-->
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> login_page </title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="../static/css/login_pop.css" th:href="@{/css/login_pop.css}">
+                
+        <!-- Boxicons CSS -->
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel="stylesheet">
+                        
+    </head>
+    <body>
+        <section class="container forms">
+            <div class="form login">
+                <div class="form-content">
+                    <header>Login</header>
+                    <!--<h2>Hi, Welcome <br>"#####"</h2>-->
+                    <form action="#" th:action="@{/api/v1/user/login}" th:object="${loginDTO}" method="POST">
+                        <div class="field input-field">
+                            <input type="text" th:field="*{role}" placeholder="Role" class="input">
+                        </div>
+                        <div class="field input-field">
+                            <input type="email" th:field="*{email}" placeholder="Email" class="input">
+                        </div>
+
+                        <div class="field input-field">
+                            <input type="password" th:field="*{password}" placeholder="Password" class="password">
+                            <i class='bx bx-hide eye-icon'></i>
+                        </div>
+
+                        <div class="form-link">
+                            <a href="#" class="forgot-pass">Forgot password?</a>
+                        </div>
+
+                        <div class="field button-field">
+                            <button>Login</button>
+                        </div>
+                    </form>
+
+                    <div class="form-link">
+                        <span>Don't have an account? <a href="#" class="link signup-link">Signup</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Signup Form -->
+
+            <div class="form signup">
+                <div class="form-content">
+                    <header>Signup</header>
+                    <form action="#" th:action="@{/api/v1/user/save}" th:object="${userDTO}" method="POST">
+                        <div class="field input-field">
+                            <input type="text" th:field="*{userName}" placeholder="Full Name" class="input">
+                        </div>
+
+                        <div class="field input-field">
+                            <input type="tel" th:field="*{mobile}" placeholder="Mobile Number" class="input">
+                        </div>
+
+                        <div class="field input-field">
+                            <input type="email" th:field="*{email}" placeholder="Email" class="input">
+                        </div>
+
+                        <div class="field input-field">
+                            <input type="text" th:field="*{role}" placeholder="Role" class="input">
+                        </div>
+
+                        <div class="field input-field">
+                            <input type="text" th:field="*{address}" placeholder="Address" class="input">
+                            <i class='bx bx-tada bx-flip-vertical bx-current-location' ></i>
+                        </div>
+
+                        <div class="field input-field">
+                            <input type="password" th:field="*{password}" placeholder="Create password" class="password">
+                        </div>
+
+                        <div class="field input-field">
+                            <input type="password" th:field="*{confirmpassword}" placeholder="Confirm password" class="password">
+                            <i class='bx bx-hide eye-icon'></i>
+                        </div>
+
+                        <div class="field button-field">
+                            <button type="submit">Signup</button>
+                        </div>
+                    </form>
+
+                    <div class="form-link">
+                        <span>Already have an account? <a href="#" class="link login-link">Login</a></span>
+                    </div>
+                </div>
+
+                <!-- <div class="line"></div> -->
+
+                <!-- <div class="media-options">
+                    <a href="#" class="field facebook">
+                        <i class='bx bxl-facebook facebook-icon'></i>
+                        <span>Login with Facebook</span>
+                    </a>
+                </div> -->
+
+                <!-- <div class="media-options">
+                    <a href="#" class="field google">
+                        <img src="images/google.png" alt="" class="google-img">
+                        <span>Login with Google</span>
+                    </a>
+                </div> -->
+
+            </div>
+        </section>
+
+        <!-- JavaScript -->
+        <script type="text/javascript" th:src="@{/js/login_pop_script.js}">
+		</script>
+    </body>
+</html>
