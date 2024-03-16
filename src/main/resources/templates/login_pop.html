@@ -20,12 +20,16 @@
             <div class="form login">
                 <div class="form-content">
                     <header>Login</header>
-                    <!--<h2>Hi, Welcome <br>"#####"</h2>-->
                     <form action="#" th:action="@{/api/v1/user/login}" th:object="${loginDTO}" method="POST">
-                        <div class="field input-field">
-                            <input type="text" th:field="*{role}" placeholder="Role" class="input">
-                        </div>
-                        <div class="field input-field">
+						<select class="dropdown" name="role" id="role">
+							<option class="dropdown-menu" th:each="option : ${roleOptions}"
+							            th:value="${option}"
+							            th:text="${option}"
+							            th:selected="${option == role}">
+							        Select Role
+						    </option>    
+					  	</select>
+						<div class="field input-field">
                             <input type="email" th:field="*{email}" placeholder="Email" class="input">
                         </div>
 
@@ -67,10 +71,14 @@
                             <input type="email" th:field="*{email}" placeholder="Email" class="input">
                         </div>
 
-                        <div class="field input-field">
-                            <input type="text" th:field="*{role}" placeholder="Role" class="input">
-                        </div>
-
+						<select class="dropdown-signup" name="role" id="role">
+							<option class="dropdown-menu" th:each="option : ${roleOptions}"
+							            th:value="${option}"
+							            th:text="${option}"
+							            th:selected="${option == role}">
+							        Select Role
+						    </option>    
+					  	</select>
                         <div class="field input-field">
                             <input type="text" th:field="*{address}" placeholder="Address" class="input">
                             <i class='bx bx-tada bx-flip-vertical bx-current-location' ></i>

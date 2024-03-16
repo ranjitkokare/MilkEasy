@@ -20,10 +20,12 @@
                 <h2>Tell us how you'd like to engage:</h2>
             </p>
             <div>
-                <a th:href="@{view_login_pop}">
-                <button type="button"><span></span>I'm a Dairy Owner</button>
-                <button type="button"><span></span>I'm a Milk Collector</button>
-                <button type="button"><span></span>I'm a Farmer</button></a>
+                <a th:href="@{view_adminlogin_pop}">
+                <button type="button" th:name="role" th:value="admin"><span></span>I'm a Dairy Owner</button>
+				<a th:href="@{view_collectorlogin_pop}">
+				<button type="button" th:name="role" th:value="collector"><span></span>I'm a Milk Collector</button>
+				<a th:href="@{view_farmerlogin_pop}">
+				<button type="button" th:name="role" th:value="farmer"><span></span>I'm a Farmer</button></a>
             </div>
         </div>
     </div>

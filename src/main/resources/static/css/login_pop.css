@@ -38,6 +38,28 @@
     opacity: 0;
     pointer-events: none;
 }
+.dropdown{
+	min-width:23.1rem;
+	min-height:3.2em;
+	position: relative;
+	margin: 0em
+}
+.dropdown:hover {
+	background: rgb(191, 203, 236)
+}
+.dropdown-signup {
+	min-width:23.1rem;
+	min-height:3.2em;
+	position: relative;
+	margin-top: 1.2rem
+}
+.dropdown-signup:hover {
+	background: rgb(191, 203, 236)
+}
+select{
+	font-size: 1rem;
+	border-radius: 0.4rem;
+}
 header{
     font-size: 28px;
     font-weight: 600;
