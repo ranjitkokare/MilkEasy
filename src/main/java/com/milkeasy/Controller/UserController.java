@@ -1,5 +1,8 @@
 package com.milkeasy.Controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -8,9 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.milkeasy.Dto.LoginDTO;
 import com.milkeasy.Dto.UserDTO;
@@ -32,12 +33,51 @@ public class UserController {
 		return "login";
 	}
 	
-	@GetMapping("/view_login_pop")
-	public String viewLoginPopPage(Model model) {
+	@GetMapping("/view_adminlogin_pop")
+	public String viewAdminLoginPopPage(Model model) {
 		UserDTO userDTO = new UserDTO();
 		model.addAttribute("userDTO", userDTO);
 		LoginDTO loginDTO = new LoginDTO();
 		model.addAttribute("loginDTO", loginDTO);
+		
+		model.addAttribute("role", "admin");
+		List <String> roleOptions = new ArrayList < > ();
+		roleOptions.add("admin");
+		roleOptions.add("collector");
+		roleOptions.add("farmer");
+		model.addAttribute("roleOptions", roleOptions);
+		
+		return "login_pop";
+	}
+	@GetMapping("/view_collectorlogin_pop")
+	public String viewCollectorLoginPopPage(Model model) {
+		UserDTO userDTO = new UserDTO();
+		model.addAttribute("userDTO", userDTO);
+		LoginDTO loginDTO = new LoginDTO();
+		model.addAttribute("loginDTO", loginDTO);
+		
+		model.addAttribute("role", "collector");
+		List <String> roleOptions = new ArrayList < > ();
+		roleOptions.add("admin");
+		roleOptions.add("collector");
+		roleOptions.add("farmer");
+		model.addAttribute("roleOptions", roleOptions);
+		
+		return "login_pop";
+	}
+	@GetMapping("/view_farmerlogin_pop")
+	public String viewFarmerLoginPopPage(Model model) {
+		UserDTO userDTO = new UserDTO();
+		model.addAttribute("userDTO", userDTO);
+		LoginDTO loginDTO = new LoginDTO();
+		model.addAttribute("loginDTO", loginDTO);
+		
+		model.addAttribute("role", "farmer");
+		List <String> roleOptions = new ArrayList < > ();
+		roleOptions.add("admin");
+		roleOptions.add("collector");
+		roleOptions.add("farmer");
+		model.addAttribute("roleOptions", roleOptions);
 		
 		return "login_pop";
 	}
