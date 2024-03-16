@@ -51,23 +51,24 @@ public class UserIMPL implements UserService{
 	@Override
 	public LoginResponse loginUser(LoginDTO loginDTO) {
 		String msg = "";
-		User user1 = userRepo.findByEmail(loginDTO.getEmail());
-		if(user1 != null) {
+		User userFromDB = userRepo.findOneByEmailAndRole(loginDTO.getEmail(), loginDTO.getRole());
+		String role = loginDTO.getRole();
+		if(userFromDB != null) {
 			String password = loginDTO.getPassword();
-			String encodedPassword = user1.getPassword();
+			String encodedPassword = userFromDB.getPassword();
 			Boolean isPwdRight = passwordEncoder.matches(password, encodedPassword);
 			if(isPwdRight) {
-				Optional<User> user = userRepo.findOneByEmailAndPassword(loginDTO.getEmail(),encodedPassword);
+				Optional<User> user = userRepo.findOneByRoleAndEmailAndPassword(loginDTO.getRole(), loginDTO.getEmail(),encodedPassword);
 				if(user.isPresent()) {
 					return new LoginResponse("Login Success", true);
 				}else {
 					return new LoginResponse("Login Failed", false);
 				}
 			}else {
-				return new LoginResponse("password Not Match", false);
+				return new LoginResponse("Role, email and password do not Match", false);
 			}
 		}else {
-			return new LoginResponse("Email not exists", false);
+			return new LoginResponse("" + role + " Email not exists", false);
 		}
 	}
 }

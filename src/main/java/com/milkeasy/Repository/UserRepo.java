@@ -11,9 +11,11 @@ import com.milkeasy.Entity.User;
 @EnableJpaRepositories
 @Repository
 public interface UserRepo extends JpaRepository<User, Integer>{
-	Optional<User> findOneByEmailAndPassword(String email, String password);
+	Optional<User> findOneByRoleAndEmailAndPassword(String role, String email, String password);
 
 	User findByEmail(String email);
+	
+	User findOneByEmailAndRole(String email, String role);
 
 }	  
 
